@@ -53,17 +53,14 @@ pipeline {
         stage('Test') {
             steps {
                 sh '''#!/bin/bash
-                echo 'Test Step: We run testing tool like pytest here'
+                echo 'Setting up virtual environment and running pytest'
 
-                # Create and activate virtual env
                 python3 -m venv mlip
                 source mlip/bin/activate
 
-                # Upgrade pip and install dependencies
                 pip install --upgrade pip
                 pip install pytest numpy pandas scikit-learn
 
-                # Run tests
                 pytest
                 '''
             }
